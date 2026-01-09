@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 
@@ -23,12 +24,16 @@ export function Hero() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-                    <Button size="lg" className="min-w-[160px] h-12 text-sm tracking-widest uppercase bg-white text-black hover:bg-white/90">
-                        Sign Up
-                    </Button>
-                    <Button size="lg" variant="outline" className="min-w-[160px] h-12 text-sm tracking-widest uppercase border-white/20 hover:bg-white/5 hover:text-white">
-                        Login
-                    </Button>
+                    <Link href="/sign-up">
+                        <Button size="lg" className="min-w-[160px] h-12 text-sm tracking-widest uppercase bg-white text-black hover:bg-white/90">
+                            Sign Up
+                        </Button>
+                    </Link>
+                    <Link href="/sign-in">
+                        <Button size="lg" variant="outline" className="min-w-[160px] h-12 text-sm tracking-widest uppercase border-white/20 hover:bg-white/5 hover:text-white">
+                            Login
+                        </Button>
+                    </Link>
                 </div>
             </motion.div>
         </section>

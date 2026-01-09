@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 
 export function Navbar() {
     return (
@@ -18,13 +19,27 @@ export function Navbar() {
                 </Link>
             </div>
 
-            <div className="flex items-center gap-4">
-                <Button variant="outline" className="h-9 px-4 text-xs tracking-wider uppercase border-white/20 hover:bg-white/5 hover:text-white">
-                    Login
-                </Button>
-                <Button className="h-9 px-4 text-xs tracking-wider uppercase bg-white text-black hover:bg-white/90">
-                    Sign Up
-                </Button>
+            <div className="hidden md:flex items-center gap-4">
+                <SignedOut>
+                    <Link href="/sign-in">
+                        <Button variant="outline" className="h-9 px-4 text-xs tracking-wider uppercase border-white/20 hover:bg-white/5 hover:text-white">
+                            Login
+                        </Button>
+                    </Link>
+                    <Link href="/sign-up">
+                        <Button className="h-9 px-4 text-xs tracking-wider uppercase bg-white text-black hover:bg-white/90">
+                            Sign Up
+                        </Button>
+                    </Link>
+                </SignedOut>
+                <SignedIn>
+                    <Link href="/dashboard">
+                        <Button variant="ghost" className="h-9 px-4 text-xs tracking-wider uppercase text-white hover:bg-white/10">
+                            Dashboard
+                        </Button>
+                    </Link>
+                    <UserButton afterSignOutUrl="/" />
+                </SignedIn>
             </div>
         </motion.header>
     )
