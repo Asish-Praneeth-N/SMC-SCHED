@@ -21,6 +21,10 @@ import { ClerkProvider } from '@clerk/nextjs'
 
 // ... existing imports
 
+import { Toaster } from "sonner";
+
+// ... existing imports
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,6 +43,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           {children}
+          <Toaster richColors position="top-center" />
         </body>
       </html>
     </ClerkProvider>
