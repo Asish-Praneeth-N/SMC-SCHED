@@ -1,37 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SMC SCHED - Medical Scheduling System
+
+SMC SCHED is a robust medical scheduling application designed to streamline hospital shift planning and management. It provides a secure, role-based environment for administrators to generate and publish schedules, and for staff to view their shifts securely.
+
+## Features
+
+-   **Role-Based Access Control (RBAC)**: Distinct access levels for Superadmins, Admins, and standard Users to ensure data security and operational hierarchy.
+-   **Automated Scheduling**: Tools to assist in managing and visualizing monthly staff rosters.
+-   **Interactive Dashboard**: A user-friendly, responsive dashboard for viewing personal shifts and hospital-wide schedules.
+-   **Secure Authentication**: Integrated with [Clerk](https://clerk.com/) for seamless and secure sign-up and sign-in processes.
+-   **Modern UI**: Built with a clean, clinical aesthetic using [Tailwind CSS](https://tailwindcss.com/) and [Shadcn/UI](https://ui.shadcn.com/) components.
+-   **Database Integration**: persistent data storage using [Neon](https://neon.tech/) (Serverless Postgres) and [Drizzle ORM](https://orm.drizzle.team/).
+
+## Tech Stack
+
+-   **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+-   **Language**: TypeScript
+-   **Styling**: Tailwind CSS v4, Shadcn/UI
+-   **Database**: Neon (PostgreSQL)
+-   **ORM**: Drizzle ORM
+-   **Authentication**: Clerk
+-   **Icons**: Lucide React
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up the project locally.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   Node.js (v18 or higher recommended)
+-   npm, yarn, pnpm, or bun
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Clone the repository:**
 
-## Learn More
+    ```bash
+    git clone <repository-url>
+    cd smcsched
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Install dependencies:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm install
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3.  **Environment Variables:**
 
-## Deploy on Vercel
+    Create a `.env` file in the root directory. You will need keys for Clerk and your Database URL.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```env
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+    CLERK_SECRET_KEY=sk_test_...
+    DATABASE_URL=postgresql://...
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-"# SMC-SCHED" 
+4.  **Database Setup:**
+
+    Push the schema to your Neon database using Drizzle Kit:
+
+    ```bash
+    npx drizzle-kit push
+    ```
+
+5.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Scripts
+
+-   `npm run dev`: Starts the development server.
+-   `npm run build`: Builds the application for production.
+-   `npm run start`: Starts the production server.
+-   `npm run lint`: Runs ESLint to identify code issues.
+
+## Project Structure
+
+-   `/app`: Contains the Next.js App Router pages, API routes, and layouts.
+-   `/components`: Reusable UI components, including Shadcn/UI primitives and custom feature components.
+-   `/lib`: Utility functions, database configuration (`db`), and schema definitions.
+-   `/public`: Static assets like images and fonts.
+
+## License
+
+This project is proprietary and intended for internal use.
